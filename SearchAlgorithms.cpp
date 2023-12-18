@@ -1,31 +1,31 @@
 int getSecondLargestNum(int someArray[], int arraySize)
 { 
-      static int index, LargestNum, SecondLargestNum;
-
-      if (index == 0)
+      static int index, * ptrLargestNum, * ptrSecondLargestNum;
+      int * arrayElement = (someArray + index);
+      
+      /* function start */
+      if (index == 0)    
       {
-            LargestNum = *someArray;
-            SecondLargestNum = *someArray;
+            ptrLargestNum = someArray;
+            ptrSecondLargestNum = someArray;
       }
-
+      /* function end */
       if (index == arraySize) 
       {     
             index = 0;
-            return SecondLargestNum; 
+            return *ptrSecondLargestNum; 
       }
-
-      if (LargestNum < *(someArray + index))
+      /* function logic */
+      if (*ptrLargestNum < *arrayElement)
       {
-            SecondLargestNum = LargestNum;
-            LargestNum = *(someArray + index);
+            ptrSecondLargestNum = ptrLargestNum;
+            ptrLargestNum = arrayElement;
       } 
-      
-      else if (SecondLargestNum < *(someArray + index))
+      else if (*ptrSecondLargestNum < *arrayElement)
       {
-            SecondLargestNum = *(someArray + index);  
+            ptrSecondLargestNum = arrayElement;  
       }
 
       ++index;
-
       return getSecondLargestNum(someArray, arraySize);
 }
