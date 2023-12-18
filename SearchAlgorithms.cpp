@@ -1,35 +1,26 @@
 #include <iostream>
 
-// Hvis "lastIndex" går ud over array'en er der undefined behaviour 
-int getSecondLargestNum(int someNums[], int index, int lastIndex, int* ptrLargestNum, int* ptrSecondLargestNum)
+int getSecondLargestNum(int someArray[], int arraySize)
 { 
-      if (index > lastIndex) 
-      {
-            if (!ptrSecondLargestNum) // Hvis den peger på null
-            {
-                  std::cout << "out of bounds";
-                  return 0;
-            }
+      static int index, LargestNum, SecondLargestNum;
 
-            return * ptrSecondLargestNum; 
+      if (index > arraySize - 1) 
+      {
+            return SecondLargestNum; 
       }
 
-      if (!ptrLargestNum) 
+      if (LargestNum < *(someArray + index))
       {
-            ptrLargestNum = someNums;
-            ptrSecondLargestNum = someNums;
-      }
-
-      if (*ptrLargestNum < *(someNums + index))
-      {
-            ptrSecondLargestNum = ptrLargestNum;
-            ptrLargestNum = (someNums + index);
+            SecondLargestNum = LargestNum;
+            LargestNum = *(someArray + index);
       } 
       
-      else if (*ptrSecondLargestNum < *(someNums + index))
+      else if (SecondLargestNum < *(someArray + index))
       {
-            ptrSecondLargestNum = (someNums + index);  
+            SecondLargestNum = *(someArray + index);  
       }
 
-      return getSecondLargestNum(someNums, index + 1, lastIndex, ptrLargestNum, ptrSecondLargestNum);
+      index++;
+
+      return getSecondLargestNum(someArray, arraySize);
 }

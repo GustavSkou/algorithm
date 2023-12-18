@@ -2,7 +2,8 @@
 #include "SearchAlgorithms.cpp"
 int main () 
 {
-      int someNums[] =
+      int size = 10;
+      int someNums[size] =
       {
             536,
             396,
@@ -16,7 +17,7 @@ int main ()
             823
       };
 
-      std::cout << getSecondLargestNum(someNums, 0, 9, nullptr, nullptr);
+      std::cout << getSecondLargestNum(someNums, size);
 
       return 0;
 }
