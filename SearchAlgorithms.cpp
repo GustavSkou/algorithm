@@ -33,24 +33,3 @@ int getSecondLargestNum(int someNums[], int index, int lastIndex, int* ptrLarges
 
       return getSecondLargestNum(someNums, index + 1, lastIndex, ptrLargestNum, ptrSecondLargestNum);
 }
-
-int main () 
-{
-      int someNums[] =
-      {
-            536,
-            396,
-            432,
-            295,
-            826,
-            339,
-            231,
-            321,
-            639,
-            823
-      };
-
-      std::cout << getSecondLargestNum(someNums, 0, 9, nullptr, nullptr);
-
-      return 0;
-}
