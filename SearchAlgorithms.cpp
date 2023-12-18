@@ -4,8 +4,15 @@ int getSecondLargestNum(int someArray[], int arraySize)
 { 
       static int index, LargestNum, SecondLargestNum;
 
-      if (index > arraySize - 1) 
+      if (index == 0)
       {
+            LargestNum = *someArray;
+            SecondLargestNum = *someArray;
+      }
+
+      if (index > arraySize - 1) 
+      {     
+            index = 0;
             return SecondLargestNum; 
       }
 
