@@ -1,5 +1,3 @@
-#include <iostream>
-
 int getSecondLargestNum(int someArray[], int arraySize)
 { 
       static int index, LargestNum, SecondLargestNum;
@@ -10,7 +8,7 @@ int getSecondLargestNum(int someArray[], int arraySize)
             SecondLargestNum = *someArray;
       }
 
-      if (index > arraySize - 1) 
+      if (index == arraySize) 
       {     
             index = 0;
             return SecondLargestNum; 
@@ -27,7 +25,7 @@ int getSecondLargestNum(int someArray[], int arraySize)
             SecondLargestNum = *(someArray + index);  
       }
 
-      index++;
+      ++index;
 
       return getSecondLargestNum(someArray, arraySize);
 }
